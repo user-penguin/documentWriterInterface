@@ -35,7 +35,7 @@
       <TextField layoutX="672.0" layoutY="108.0" promptText="код оп ОКДП" />
       <TextField layoutX="279.0" layoutY="70.0" prefHeight="26.0" prefWidth="378.0" />
       <TextField layoutX="279.0" layoutY="109.0" prefHeight="26.0" prefWidth="378.0" />
-      <GridPane cache="true" gridLinesVisible="true" layoutX="41.0" layoutY="148.0" onMouseMoved="#update" prefHeight="385.0" prefWidth="985.0">
+      <GridPane cache="true" gridLinesVisible="true" layoutX="151.0" layoutY="148.0" onMouseMoved="#update" prefHeight="385.0" prefWidth="985.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="328.0" minWidth="10.0" prefWidth="328.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="220.0" />
@@ -75,8 +75,8 @@
                <children>
                   <Pane layoutX="2.0" layoutY="1.0" prefHeight="41.0" prefWidth="217.0">
                      <children>
-                        <TextField layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="151.0" promptText="руб" />
-                        <TextField layoutX="162.0" layoutY="7.0" prefHeight="26.0" prefWidth="51.0" promptText="коп" />
+                        <TextField fx:id="summaZaObshieProizvodRub" layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="151.0" promptText="руб" />
+                        <TextField fx:id="summaZaObshieProizvodKop" layoutX="162.0" layoutY="7.0" prefHeight="26.0" prefWidth="51.0" promptText="коп" />
                      </children>
                   </Pane>
                </children>
@@ -115,14 +115,14 @@
             </Pane>
             <Pane prefHeight="41.0" prefWidth="217.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <children>
-                  <TextField layoutX="6.0" layoutY="7.0" prefHeight="26.0" prefWidth="151.0" promptText="руб" />
-                  <TextField layoutX="162.0" layoutY="7.0" prefHeight="26.0" prefWidth="51.0" promptText="коп" />
+                  <TextField fx:id="summaZaPorcProizvodRub" layoutX="6.0" layoutY="7.0" prefHeight="26.0" prefWidth="151.0" promptText="руб" />
+                  <TextField fx:id="summaZaPorcProizvodKop" layoutX="162.0" layoutY="7.0" prefHeight="26.0" prefWidth="51.0" promptText="коп" />
                </children>
             </Pane>
             <Pane layoutX="558.0" layoutY="136.0" prefHeight="41.0" prefWidth="217.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <children>
-                  <TextField layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="151.0" promptText="руб" />
-                  <TextField layoutX="162.0" layoutY="7.0" prefHeight="26.0" prefWidth="51.0" promptText="коп" />
+                  <TextField fx:id="summaZaObediProizvodRub" layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="151.0" promptText="руб" />
+                  <TextField fx:id="summaZaObediProizvodKop" layoutX="162.0" layoutY="7.0" prefHeight="26.0" prefWidth="51.0" promptText="коп" />
                </children>
             </Pane>
             <Pane layoutX="338.0" layoutY="178.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
