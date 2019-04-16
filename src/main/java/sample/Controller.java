@@ -18,6 +18,16 @@ public class Controller {
             summaZaObediProizvodRub, summaZaObediProizvodKop;
 
     @FXML
+    private TextField sotrudPoCenamRub, sotrudPoCenamKop,
+            sotrudPoProizvodRub, sotrudPoProizvodKop,
+            filialCenamRub, filialCenamKop,
+            filialProizvodRub, FilialProizvodKop;
+
+    @FXML
+    private TextField topFinalProdRub, topFinalProdKop,
+            topFinalProizvRub, topFinalProizvKop;
+
+    @FXML
     public void initialize () {
 
     }
@@ -26,6 +36,22 @@ public class Controller {
     public void update () {
         updateIIchetvert();
         updateIchetvrert();
+        updateSubTotal();
+    }
+
+    private void updateSubTotal() {
+        int allKop = convertVoid(itogIProdajiKop) + convertVoid(sotrudPoCenamKop) +
+                convertVoid(filialCenamKop);
+        topFinalProdKop.setText(String.valueOf(allKop % 100));
+        int rub = convertVoid(itogIProdajiRub) + convertVoid(sotrudPoCenamRub) +
+                convertVoid(filialCenamRub) + allKop / 100;
+        topFinalProdRub.setText(String.valueOf(rub));
+        allKop = convertVoid(itogIProizvodKop) + convertVoid(sotrudPoProizvodKop) +
+                convertVoid(FilialProizvodKop);
+        topFinalProizvKop.setText(String.valueOf(allKop % 100));
+        rub = convertVoid(itogIProizvodRub) + convertVoid(sotrudPoProizvodRub) +
+                convertVoid(filialProizvodRub) + allKop / 100;
+        topFinalProizvRub.setText(String.valueOf(rub));
     }
 
     private void updateChetvert (TextField[] textFields) {
