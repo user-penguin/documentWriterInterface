@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PeopleController">
+   <children>
+      <MenuButton fx:id="ruk" layoutX="48.0" layoutY="51.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="329.0" text="Руководитель">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Кустурица Антон Павлович" />
+         </items>
+      </MenuButton>
+      <TextField fx:id="rukTxt" layoutX="418.0" layoutY="51.0" prefHeight="26.0" prefWidth="299.0" />
+      <MenuButton fx:id="prov" layoutX="48.0" layoutY="94.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="329.0" text="Акт проверил" textAlignment="CENTER" />
+      <TextField fx:id="provTxt" layoutX="418.0" layoutY="94.0" prefHeight="26.0" prefWidth="299.0" />
+      <MenuButton fx:id="kass" layoutX="48.0" layoutY="140.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="329.0" text="Кассир" />
+      <TextField fx:id="kassTxt" layoutX="418.0" layoutY="140.0" prefHeight="26.0" prefWidth="299.0" />
+      <MenuButton fx:id="brig" layoutX="48.0" layoutY="224.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="329.0" text="Заведующий производством (бригадир)" />
+      <TextField fx:id="brigTxt" layoutX="418.0" layoutY="224.0" prefHeight="26.0" prefWidth="299.0" />
+      <Line endX="565.0" layoutX="149.0" layoutY="203.0" startX="-100.0" />
+      <Text layoutX="296.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Члены комиссии" />
+      <MenuButton fx:id="sot2" layoutX="48.0" layoutY="269.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="329.0" text="Сотрудник 2" />
+      <TextField fx:id="sot2Txt" layoutX="418.0" layoutY="269.0" prefHeight="26.0" prefWidth="299.0" />
+      <MenuButton fx:id="sot3" layoutX="48.0" layoutY="309.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="329.0" text="Сотрудник 3" />
+      <TextField fx:id="sot3Txt" layoutX="418.0" layoutY="309.0" prefHeight="26.0" prefWidth="299.0" />
+   </children>
+</Pane>

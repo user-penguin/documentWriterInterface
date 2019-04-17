@@ -1,35 +1,57 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Controller {
-    @FXML
-    private TextField itogIProdajiRub, itogIProdajiKop, itogIProizvodRub, itogIProizvodKop;
+    public static String rukovoditel, proveril, cassir, brigadir, sotr2, sotr3;
+
+    public Object testObject;
 
     @FXML
-    private TextField summaZaObshieProdRub, summaZaObshieProdKop,
-            summaZaPorcProdRub, summaZaPorcProdKop,
-            summaZaObediProdRub, summaZaObediProdKop;
+    private TextField itogIProdajiRub, itogIProizvodRub;
 
     @FXML
-    private TextField summaZaObshieProizvodRub, summaZaObshieProizvodKop,
-            summaZaPorcProizvodRub, summaZaPorcProizvodKop,
-            summaZaObediProizvodRub, summaZaObediProizvodKop;
+    private TextField summaZaObshieProdRub,
+            summaZaPorcProdRub,
+            summaZaObediProdRub;
 
     @FXML
-    private TextField sotrudPoCenamRub, sotrudPoCenamKop,
-            sotrudPoProizvodRub, sotrudPoProizvodKop,
-            filialCenamRub, filialCenamKop,
-            filialProizvodRub, FilialProizvodKop;
+    private TextField summaZaObshieProizvodRub,
+            summaZaPorcProizvodRub,
+            summaZaObediProizvodRub;
 
     @FXML
-    private TextField topFinalProdRub, topFinalProdKop,
-            topFinalProizvRub, topFinalProizvKop;
+    private TextField sotrudPoCenamRub,
+            sotrudPoProizvodRub,
+            filialCenamRub,
+            filialProizvodRub;
 
+    @FXML
+    private TextField topFinalProdRub,
+            topFinalProizvRub;
+
+    @FXML
+    private TextField percentOfSpec, percentOfSol,
+            specRub, solRub,
+            solTotalRub, finalResult;
     @FXML
     public void initialize () {
-
+//        rukovoditel = "";
+//        proveril = "";
+//        cassir = "";
+//        brigadir = "";
+//        sotr2 = "";
+//        sotr3 = "";
     }
 
     @FXML
@@ -37,66 +59,134 @@ public class Controller {
         updateIIchetvert();
         updateIchetvrert();
         updateSubTotal();
+        updateSpec();
+        updateSault();
+        updateSolTotal();
+        finalUpdate();
+    }
+
+    private void finalUpdate() {
+        double result = convertVoidDouble(topFinalProdRub) + convertVoidDouble(topFinalProizvRub);
+        finalResult.setText(String.valueOf(new BigDecimal(result).setScale(2, RoundingMode.UP).doubleValue()));
     }
 
     private void updateSubTotal() {
-        int allKop = convertVoid(itogIProdajiKop) + convertVoid(sotrudPoCenamKop) +
-                convertVoid(filialCenamKop);
-        topFinalProdKop.setText(String.valueOf(allKop % 100));
-        int rub = convertVoid(itogIProdajiRub) + convertVoid(sotrudPoCenamRub) +
-                convertVoid(filialCenamRub) + allKop / 100;
+        double rub = convertVoidDouble(itogIProdajiRub) + convertVoidDouble(sotrudPoCenamRub) +
+                convertVoidDouble(filialCenamRub);
         topFinalProdRub.setText(String.valueOf(rub));
-        allKop = convertVoid(itogIProizvodKop) + convertVoid(sotrudPoProizvodKop) +
-                convertVoid(FilialProizvodKop);
-        topFinalProizvKop.setText(String.valueOf(allKop % 100));
-        rub = convertVoid(itogIProizvodRub) + convertVoid(sotrudPoProizvodRub) +
-                convertVoid(filialProizvodRub) + allKop / 100;
+
+        rub = convertVoidDouble(itogIProizvodRub) + convertVoidDouble(sotrudPoProizvodRub) +
+                convertVoidDouble(filialProizvodRub);
         topFinalProizvRub.setText(String.valueOf(rub));
     }
 
+    private void updateSolTotal () {
+        double rub = convertVoidDouble(solRub) + convertVoidDouble(specRub);
+        solTotalRub.setText(String.valueOf(rub));
+    }
+
+    private void updateSault () {
+        double spec = convertVoidDouble(percentOfSol);
+        double res = Double.parseDouble(topFinalProizvRub.getText());
+        res = res / 100 * spec;
+        int rub = (int) res;
+        int kop = (int)(res * 100) % 100;
+        solRub.setText(String.valueOf(rub));
+    }
+
+    private void updateSpec () {
+        double spec = convertVoidDouble(percentOfSpec);
+        double res = Double.parseDouble(topFinalProizvRub.getText());
+        res = res / 100 * spec;
+        int rub = (int) res;
+        int kop = (int)(res * 100) % 100;
+        specRub.setText(String.valueOf(rub));
+    }
+
     private void updateChetvert (TextField[] textFields) {
-        int allKop = convertVoid(textFields[0]) + convertVoid(textFields[1]) + convertVoid(textFields[2]);
-        int realKop = allKop % 100;
-        int ostKop = allKop / 100;
-        int rub = convertVoid(textFields[3]) + convertVoid(textFields[4]) +
-                convertVoid(textFields[5]) + ostKop;
-        textFields[6].setText(String.valueOf(rub));
-        textFields[7].setText(String.valueOf(realKop));
+        double rub = convertVoidDouble(textFields[0]) + convertVoidDouble(textFields[1]) +
+                convertVoidDouble(textFields[2]);
+        textFields[3].setText(String.valueOf(rub));
     }
 
     private void updateIIchetvert () {
         TextField[] textFields = new TextField[] {
-                summaZaObshieProdKop,
-                summaZaPorcProdKop,
-                summaZaObediProdKop,
                 summaZaObshieProdRub,
                 summaZaPorcProdRub,
                 summaZaObediProdRub,
-                itogIProdajiRub,
-                itogIProdajiKop
+                itogIProdajiRub
         };
         updateChetvert(textFields);
     }
 
     private void updateIchetvrert () {
         TextField[] textFields = new TextField[] {
-                summaZaObshieProizvodKop,
-                summaZaPorcProizvodKop,
-                summaZaObediProizvodKop,
                 summaZaObshieProizvodRub,
                 summaZaPorcProizvodRub,
                 summaZaObediProizvodRub,
-                itogIProizvodRub,
-                itogIProizvodKop
+                itogIProizvodRub
         };
         updateChetvert(textFields);
     }
 
-    private int convertVoid (TextField textField) {
-        if (textField.getText().equals("")) {
+    private double convertVoidDouble (TextField textField) {
+        String text = textField.getText();
+        text = text.replace(' ', '.');
+        text = text.replace(',', '.');
+        if (text.equals("")) {
             return 0;
         } else {
-            return Integer.parseInt(textField.getText());
+            double value = Double.parseDouble(text);
+            double newDouble = new BigDecimal(value).setScale(2, RoundingMode.DOWN).doubleValue();
+            return newDouble;
         }
     }
+
+    @FXML
+    private void showPeopleAddForm() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/addPeople.fxml"));
+        Parent root = null;
+        try {
+            root = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        PeopleController peopleController = fxmlLoader.getController();
+        peopleController.setController(this);
+        Stage selectStage = new Stage();
+        selectStage.initModality(Modality.APPLICATION_MODAL);
+        selectStage.setTitle("Ответственные люди");
+        selectStage.setScene(new Scene(root, 754, 403));
+        selectStage.show();
+    }
+
+    @FXML
+    private TextField organization, OKPO, podrazdel, OKDP;
+
+    @FXML
+    public void addMaveric () {
+        organization.setText("ООО Маверик");
+        OKPO.setText("12321");
+    }
+
+    @FXML
+    public void addMuravei () {
+        organization.setText("ЗАО Муравейник");
+        OKPO.setText("12325");
+    }
+
+    @FXML
+    public void addZ () {
+        podrazdel.setText("Отдел З");
+        OKDP.setText("123");
+    }
+
+    @FXML
+    public void addM () {
+        podrazdel.setText("Отдел М");
+        OKDP.setText("124");
+    }
+
+
+
 }

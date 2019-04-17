@@ -14,33 +14,33 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="845.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <Text layoutX="457.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="АКТ №" wrappingWidth="51.0634765625" />
-      <TextField fx:id="numberOfAct" layoutX="508.0" layoutY="13.0" prefHeight="26.0" prefWidth="125.0" />
-      <Text layoutX="647.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Дата" wrappingWidth="51.0634765625" />
-      <DatePicker layoutX="698.0" layoutY="13.0" />
-      <Text layoutX="508.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="О ПРОДАЖЕ И ОТПУСКЕ ИЗДЕЛИЙ КУХНИ" wrappingWidth="299.0634765625" />
-      <MenuButton layoutX="41.0" layoutY="69.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="221.0" text="Выберите организацию">
+      <Text layoutX="270.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="АКТ №" wrappingWidth="51.0634765625" />
+      <TextField fx:id="numberOfAct" layoutX="321.0" layoutY="14.0" prefHeight="26.0" prefWidth="125.0" />
+      <Text layoutX="460.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Дата" wrappingWidth="51.0634765625" />
+      <DatePicker layoutX="511.0" layoutY="14.0" />
+      <Text layoutX="731.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="О ПРОДАЖЕ И ОТПУСКЕ ИЗДЕЛИЙ КУХНИ" wrappingWidth="299.0634765625" />
+      <MenuButton layoutX="249.0" layoutY="69.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="221.0" text="Выберите организацию">
         <items>
-          <MenuItem mnemonicParsing="false" text="ООО Маверик" />
-          <MenuItem mnemonicParsing="false" text="ЗАО Муравейник" />
+          <MenuItem mnemonicParsing="false" onAction="#addMaveric" text="ООО Маверик" />
+          <MenuItem mnemonicParsing="false" onAction="#addMuravei" text="ЗАО Муравейник" />
         </items>
       </MenuButton>
-      <TextField layoutX="672.0" layoutY="70.0" promptText="код по ОКПО" />
-      <MenuButton layoutX="41.0" layoutY="108.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="221.0" text="Выберите подразделение">
+      <TextField fx:id="OKPO" layoutX="880.0" layoutY="70.0" promptText="код по ОКПО" />
+      <MenuButton layoutX="249.0" layoutY="107.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="221.0" text="Выберите подразделение">
          <items>
-            <MenuItem mnemonicParsing="false" text="ООО Маверик" />
-            <MenuItem mnemonicParsing="false" text="ЗАО Муравейник" />
+            <MenuItem mnemonicParsing="false" onAction="#addM" text="Отдел М" />
+            <MenuItem mnemonicParsing="false" onAction="#addZ" text="Отдел З" />
          </items>
       </MenuButton>
-      <TextField layoutX="672.0" layoutY="108.0" promptText="код оп ОКДП" />
-      <TextField layoutX="279.0" layoutY="70.0" prefHeight="26.0" prefWidth="378.0" />
-      <TextField layoutX="279.0" layoutY="109.0" prefHeight="26.0" prefWidth="378.0" />
-      <GridPane cache="true" gridLinesVisible="true" layoutX="151.0" layoutY="148.0" onMouseMoved="#update" prefHeight="385.0" prefWidth="985.0">
+      <TextField fx:id="OKDP" layoutX="880.0" layoutY="107.0" promptText="код оп ОКДП" />
+      <TextField fx:id="organization" layoutX="487.0" layoutY="70.0" prefHeight="26.0" prefWidth="378.0" />
+      <TextField fx:id="podrazdel" layoutX="487.0" layoutY="108.0" prefHeight="26.0" prefWidth="378.0" />
+      <GridPane cache="true" gridLinesVisible="true" layoutX="41.0" layoutY="148.0" onMouseMoved="#update" prefHeight="385.0" prefWidth="1203.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="328.0" minWidth="10.0" prefWidth="328.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="220.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="220.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="279.0" minWidth="10.0" prefWidth="142.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="214.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="397.0" minWidth="10.0" prefWidth="209.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="452.0" minWidth="10.0" prefWidth="452.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
@@ -59,7 +59,7 @@
                   <Text layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="По ценам продажи" textAlignment="CENTER" wrappingWidth="219.99999657273293" />
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #dcdcdc;" GridPane.columnIndex="3">
+            <Pane prefHeight="41.0" prefWidth="317.0" style="-fx-background-color: #dcdcdc;" GridPane.columnIndex="3">
                <children>
                   <Text layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Примечание" textAlignment="CENTER" wrappingWidth="201.99998021125793" />
                </children>
@@ -67,16 +67,14 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="I. ПРОДАНО ЗА НАЛИЧНЫЙ РАСЧЕТ" textAlignment="CENTER" wrappingWidth="329.5800773501396" />
             <Pane prefHeight="41.0" prefWidth="217.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <TextField fx:id="summaZaObshieProdRub" layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="151.0" promptText="руб" />
-                  <TextField fx:id="summaZaObshieProdKop" layoutX="162.0" layoutY="7.0" prefHeight="26.0" prefWidth="51.0" promptText="коп" />
+                  <TextField fx:id="summaZaObshieProdRub" layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="202.0" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
                   <Pane layoutX="2.0" layoutY="1.0" prefHeight="41.0" prefWidth="217.0">
                      <children>
-                        <TextField fx:id="summaZaObshieProizvodRub" layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="151.0" promptText="руб" />
-                        <TextField fx:id="summaZaObshieProizvodKop" layoutX="162.0" layoutY="7.0" prefHeight="26.0" prefWidth="51.0" promptText="коп" />
+                        <TextField fx:id="summaZaObshieProizvodRub" layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="197.0" />
                      </children>
                   </Pane>
                </children>
@@ -103,41 +101,35 @@
             </Pane>
             <Pane layoutX="10.0" layoutY="230.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <TextField fx:id="summaZaPorcProdRub" layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="151.0" promptText="руб" />
-                  <TextField fx:id="summaZaPorcProdKop" layoutX="162.0" layoutY="7.0" prefHeight="26.0" prefWidth="51.0" promptText="коп" />
+                  <TextField fx:id="summaZaPorcProdRub" layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="202.0" />
                </children>
             </Pane>
             <Pane layoutX="317.0" layoutY="135.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
-                  <TextField fx:id="summaZaObediProdRub" layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="151.0" promptText="руб" />
-                  <TextField fx:id="summaZaObediProdKop" layoutX="162.0" layoutY="7.0" prefHeight="26.0" prefWidth="51.0" promptText="коп" />
+                  <TextField fx:id="summaZaObediProdRub" layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="201.0" />
                </children>
             </Pane>
             <Pane prefHeight="41.0" prefWidth="217.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <children>
-                  <TextField fx:id="summaZaPorcProizvodRub" layoutX="6.0" layoutY="7.0" prefHeight="26.0" prefWidth="151.0" promptText="руб" />
-                  <TextField fx:id="summaZaPorcProizvodKop" layoutX="162.0" layoutY="7.0" prefHeight="26.0" prefWidth="51.0" promptText="коп" />
+                  <TextField fx:id="summaZaPorcProizvodRub" layoutX="6.0" layoutY="7.0" prefHeight="26.0" prefWidth="197.0" />
                </children>
             </Pane>
             <Pane layoutX="558.0" layoutY="136.0" prefHeight="41.0" prefWidth="217.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <children>
-                  <TextField fx:id="summaZaObediProizvodRub" layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="151.0" promptText="руб" />
-                  <TextField fx:id="summaZaObediProizvodKop" layoutX="162.0" layoutY="7.0" prefHeight="26.0" prefWidth="51.0" promptText="коп" />
+                  <TextField fx:id="summaZaObediProizvodRub" layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="197.0" />
                </children>
             </Pane>
             <Pane layoutX="338.0" layoutY="178.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <children>
-                  <TextField fx:id="itogIProdajiRub" layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="151.0" promptText="руб" />
-                  <TextField fx:id="itogIProdajiKop" layoutX="162.0" layoutY="7.0" prefHeight="26.0" prefWidth="51.0" promptText="коп" />
+                  <TextField fx:id="itogIProdajiRub" layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="201.0" />
                </children>
             </Pane>
             <Pane layoutX="338.0" layoutY="220.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <children>
-                  <TextField fx:id="itogIProizvodRub" layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="151.0" promptText="руб" />
-                  <TextField fx:id="itogIProizvodKop" layoutX="162.0" layoutY="7.0" prefHeight="26.0" prefWidth="51.0" promptText="коп" />
+                  <TextField fx:id="itogIProizvodRub" layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="197.0" />
                </children>
             </Pane>
-            <TextField layoutX="778.0" layoutY="144.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <TextField layoutX="778.0" layoutY="144.0" prefHeight="26.0" prefWidth="302.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" right="10.0" />
                </GridPane.margin></TextField>
@@ -162,14 +154,12 @@
             </Pane>
             <Pane layoutX="338.0" layoutY="88.0" prefHeight="41.0" prefWidth="217.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <children>
-                  <TextField fx:id="sotrudPoCenamRub" layoutX="5.0" layoutY="14.0" prefHeight="26.0" prefWidth="151.0" promptText="руб" />
-                  <TextField fx:id="sotrudPoCenamKop" layoutX="162.0" layoutY="14.0" prefHeight="26.0" prefWidth="51.0" promptText="коп" />
+                  <TextField fx:id="sotrudPoCenamRub" layoutX="5.0" layoutY="14.0" prefHeight="26.0" prefWidth="202.0" />
                </children>
             </Pane>
             <Pane layoutX="338.0" layoutY="282.0" prefHeight="41.0" prefWidth="217.0" GridPane.columnIndex="2" GridPane.rowIndex="6">
                <children>
-                  <TextField fx:id="sotrudPoProizvodRub" layoutX="5.0" layoutY="13.0" prefHeight="26.0" prefWidth="151.0" promptText="руб" />
-                  <TextField fx:id="sotrudPoProizvodKop" layoutX="162.0" layoutY="13.0" prefHeight="26.0" prefWidth="51.0" promptText="коп" />
+                  <TextField fx:id="sotrudPoProizvodRub" layoutX="5.0" layoutY="13.0" prefHeight="26.0" prefWidth="201.0" />
                </children>
             </Pane>
             <TextField layoutX="778.0" layoutY="212.0" GridPane.columnIndex="3" GridPane.rowIndex="6">
@@ -178,14 +168,12 @@
                </GridPane.margin></TextField>
             <Pane prefHeight="41.0" prefWidth="217.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <children>
-                  <TextField fx:id="filialCenamRub" layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="151.0" promptText="руб" />
-                  <TextField fx:id="filialCenamKop" layoutX="162.0" layoutY="7.0" prefHeight="26.0" prefWidth="51.0" promptText="коп" />
+                  <TextField fx:id="filialCenamRub" layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="202.0" />
                </children>
             </Pane>
             <Pane layoutX="338.0" layoutY="346.0" prefHeight="41.0" prefWidth="217.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
                <children>
-                  <TextField fx:id="filialProizvodRub" layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="151.0" promptText="руб" />
-                  <TextField fx:id="FilialProizvodKop" layoutX="162.0" layoutY="7.0" prefHeight="26.0" prefWidth="51.0" promptText="коп" />
+                  <TextField fx:id="filialProizvodRub" layoutX="5.0" layoutY="7.0" prefHeight="26.0" prefWidth="202.0" />
                </children>
             </Pane>
             <Pane style="-fx-background-color: #dcdcdc;" GridPane.rowIndex="6">
@@ -229,86 +217,51 @@
             </Pane>
             <Pane layoutX="338.0" layoutY="305.0" prefHeight="41.0" prefWidth="217.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <children>
-                  <TextField fx:id="topFinalProdRub" layoutX="5.0" layoutY="12.0" prefHeight="26.0" prefWidth="151.0" promptText="руб" />
-                  <TextField fx:id="topFinalProdKop" layoutX="162.0" layoutY="12.0" prefHeight="26.0" prefWidth="51.0" promptText="коп" />
+                  <TextField fx:id="topFinalProdRub" layoutX="5.0" layoutY="12.0" prefHeight="26.0" prefWidth="201.0" />
                </children>
             </Pane>
             <Pane layoutX="338.0" layoutY="345.0" prefHeight="41.0" prefWidth="217.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
                <children>
-                  <TextField fx:id="topFinalProizvRub" layoutX="5.0" layoutY="12.0" prefHeight="26.0" prefWidth="151.0" promptText="руб" />
-                  <TextField fx:id="topFinalProizvKop" layoutX="162.0" layoutY="12.0" prefHeight="26.0" prefWidth="51.0" promptText="коп" />
+                  <TextField fx:id="topFinalProizvRub" layoutX="5.0" layoutY="12.0" prefHeight="26.0" prefWidth="202.0" />
                </children>
             </Pane>
          </children>
       </GridPane>
-      <Pane layoutX="41.0" layoutY="553.0" prefHeight="266.0" prefWidth="651.0" style="-fx-background-color: #dcdcdc; -fx-border-color: grey;">
+      <Pane layoutX="41.0" layoutY="553.0" onMouseMoved="#update" prefHeight="197.0" prefWidth="526.0" style="-fx-background-color: #dcdcdc; -fx-border-color: grey;">
          <children>
-            <TextField layoutX="97.0" layoutY="67.0" prefHeight="26.0" prefWidth="85.0" />
-            <TextField layoutX="97.0" layoutY="31.0" prefHeight="26.0" prefWidth="85.0" />
-            <Text layoutX="188.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\% к обороту на сумму" />
-            <Text layoutX="188.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\% к обороту на сумму" />
-            <TextField layoutX="354.0" layoutY="67.0" prefHeight="26.0" prefWidth="131.0" promptText="руб" />
-            <TextField layoutX="39.0" layoutY="179.0" prefHeight="26.0" prefWidth="131.0" />
-            <TextField layoutX="214.0" layoutY="179.0" prefHeight="26.0" prefWidth="49.0" />
-            <TextField layoutX="493.0" layoutY="107.0" prefHeight="26.0" prefWidth="49.0" promptText="коп" />
-            <Text layoutX="300.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="итого" />
-            <TextField layoutX="354.0" layoutY="107.0" prefHeight="26.0" prefWidth="131.0" promptText="руб" />
-            <TextField layoutX="493.0" layoutY="66.0" prefHeight="26.0" prefWidth="49.0" promptText="коп" />
-            <Text layoutX="39.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Выручка кассы (в документе введётся прописью)" />
-            <TextField layoutX="354.0" layoutY="31.0" prefHeight="26.0" prefWidth="131.0" promptText="руб" />
-            <TextField layoutX="493.0" layoutY="31.0" prefHeight="26.0" prefWidth="49.0" promptText="коп" />
-            <MenuButton layoutX="39.0" layoutY="221.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="233.0" text="Кассир">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="ООО Маверик" />
-                  <MenuItem mnemonicParsing="false" text="ЗАО Муравейник" />
-               </items>
-            </MenuButton>
-            <TextField layoutX="301.0" layoutY="222.0" prefHeight="26.0" prefWidth="324.0" />
-            <Text layoutX="131.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="СПРАВКА: Израсходованно на приготовление блюд" />
-            <Text layoutX="39.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="специй" />
-            <Text layoutX="39.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="соли" />
-            <Text layoutX="174.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="руб" />
-            <Text layoutX="268.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="коп" />
+            <TextField fx:id="percentOfSol" layoutX="67.0" layoutY="67.0" prefHeight="26.0" prefWidth="85.0" />
+            <TextField fx:id="percentOfSpec" layoutX="67.0" layoutY="31.0" prefHeight="26.0" prefWidth="85.0" />
+            <Text layoutX="158.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\% к обороту на сумму" />
+            <Text layoutX="158.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\% к обороту на сумму" />
+            <TextField fx:id="solRub" layoutX="324.0" layoutY="67.0" prefHeight="26.0" prefWidth="170.0" />
+            <TextField fx:id="finalResult" layoutX="106.0" layoutY="163.0" prefHeight="26.0" prefWidth="233.0" />
+            <Text layoutX="270.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="итого" />
+            <TextField fx:id="solTotalRub" layoutX="324.0" layoutY="104.0" prefHeight="26.0" prefWidth="170.0" />
+            <Text layoutX="84.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Выручка кассы (в документе введётся прописью)" />
+            <TextField fx:id="specRub" layoutX="324.0" layoutY="31.0" prefHeight="26.0" prefWidth="170.0" />
+            <Text layoutX="79.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="СПРАВКА: Израсходованно на приготовление блюд" />
+            <Text layoutX="9.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="специй" />
+            <Text layoutX="9.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="соли" />
+            <Text layoutX="357.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="руб" />
          </children>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </Pane>
-      <Button layoutX="736.0" layoutY="769.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="342.0" text="Заполнить информацию о членах комиссии" />
-      <Button layoutX="1120.0" layoutY="769.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="125.0" text="Экспорт в Excel" />
-      <MenuButton layoutX="907.0" layoutY="69.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="151.0" text="Руководитель">
-         <items>
-            <MenuItem mnemonicParsing="false" text="ООО Маверик" />
-            <MenuItem mnemonicParsing="false" text="ЗАО Муравейник" />
-         </items>
-      </MenuButton>
-      <DatePicker layoutX="1088.0" layoutY="108.0" prefHeight="26.0" prefWidth="188.0" />
-      <TextField layoutX="1088.0" layoutY="70.0" prefHeight="26.0" prefWidth="188.0" />
-      <Text layoutX="917.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Дата заполнения" wrappingWidth="131.00000768899918" />
-      <Pane layoutX="736.0" layoutY="553.0" prefHeight="163.0" prefWidth="241.0" style="-fx-background-color: #dcdcdc; -fx-border-color: grey;">
+      <Button layoutX="724.0" layoutY="763.0" mnemonicParsing="false" onAction="#showPeopleAddForm" prefHeight="60.0" prefWidth="328.0" text="Заполнить информацию о членах комиссии" />
+      <DatePicker layoutX="261.0" layoutY="775.0" prefHeight="26.0" prefWidth="188.0" />
+      <Text layoutX="90.0" layoutY="793.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Дата заполнения" wrappingWidth="131.00000768899918" />
+      <Pane layoutX="586.0" layoutY="553.0" prefHeight="89.0" prefWidth="663.0" style="-fx-background-color: #dcdcdc; -fx-border-color: grey;">
          <children>
-            <Text layoutX="82.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Накладные" />
-            <TextField layoutX="35.0" layoutY="31.0" />
-            <TextField layoutX="35.0" layoutY="61.0" />
-            <TextField layoutX="35.0" layoutY="91.0" />
-            <TextField layoutX="35.0" layoutY="121.0" />
+            <Text layoutX="276.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Накладные  №№" />
+            <TextField layoutX="19.0" layoutY="26.0" prefHeight="50.0" prefWidth="626.0" />
          </children>
       </Pane>
-      <Pane layoutX="1004.0" layoutY="553.0" prefHeight="163.0" prefWidth="241.0" style="-fx-background-color: #dcdcdc; -fx-border-color: grey;">
+      <Pane layoutX="586.0" layoutY="655.0" prefHeight="95.0" prefWidth="663.0" style="-fx-background-color: #dcdcdc; -fx-border-color: grey;">
          <children>
-            <Text layoutX="64.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Заборные листы" />
-            <TextField layoutX="35.0" layoutY="61.0" />
-            <TextField layoutX="35.0" layoutY="90.0" />
-            <TextField layoutX="35.0" layoutY="119.0" />
-            <TextField layoutX="35.0" layoutY="32.0" />
+            <Text layoutX="262.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Заборные листы №№" />
+            <TextField layoutX="21.0" layoutY="32.0" prefHeight="50.0" prefWidth="626.0" />
          </children>
       </Pane>
-      <MenuButton layoutX="736.0" layoutY="728.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="241.0" text="Акт проверил" textAlignment="CENTER">
-         <items>
-            <MenuItem mnemonicParsing="false" text="ООО Маверик" />
-            <MenuItem mnemonicParsing="false" text="ЗАО Муравейник" />
-         </items>
-      </MenuButton>
-      <TextField layoutX="1004.0" layoutY="729.0" prefHeight="26.0" prefWidth="241.0" />
    </children>
 </Pane>
