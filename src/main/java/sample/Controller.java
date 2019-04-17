@@ -15,8 +15,6 @@ import java.math.RoundingMode;
 public class Controller {
     public static String rukovoditel, proveril, cassir, brigadir, sotr2, sotr3;
 
-    public Object testObject;
-
     @FXML
     private TextField itogIProdajiRub, itogIProizvodRub;
 
@@ -46,12 +44,6 @@ public class Controller {
             solTotalRub, finalResult;
     @FXML
     public void initialize () {
-//        rukovoditel = "";
-//        proveril = "";
-//        cassir = "";
-//        brigadir = "";
-//        sotr2 = "";
-//        sotr3 = "";
     }
 
     @FXML

@@ -60,4 +60,14 @@ public class PeopleController {
             }
         }
     }
+
+    @FXML
+    public void update () {
+        controller.rukovoditel = rukTxt.getText();
+        controller.proveril = provTxt.getText();
+        controller.cassir = kassTxt.getText();
+        controller.brigadir = brigTxt.getText();
+        controller.sotr2 = sot2Txt.getText();
+        controller.sotr3 = sot3Txt.getText();
+    }
 }
