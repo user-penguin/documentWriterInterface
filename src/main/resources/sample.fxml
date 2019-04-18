@@ -17,7 +17,7 @@
       <Text layoutX="270.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="АКТ №" wrappingWidth="51.0634765625" />
       <TextField fx:id="numberOfAct" layoutX="321.0" layoutY="14.0" prefHeight="26.0" prefWidth="125.0" />
       <Text layoutX="460.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Дата" wrappingWidth="51.0634765625" />
-      <DatePicker layoutX="511.0" layoutY="14.0" />
+      <DatePicker fx:id="dataCreate" layoutX="511.0" layoutY="14.0" />
       <Text layoutX="731.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="О ПРОДАЖЕ И ОТПУСКЕ ИЗДЕЛИЙ КУХНИ" wrappingWidth="299.0634765625" />
       <MenuButton layoutX="249.0" layoutY="69.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="221.0" text="Выберите организацию">
         <items>
@@ -263,5 +263,6 @@
             <TextField layoutX="21.0" layoutY="32.0" prefHeight="50.0" prefWidth="626.0" />
          </children>
       </Pane>
+      <Button layoutX="1060.0" layoutY="762.0" mnemonicParsing="false" onAction="#toExcel" prefHeight="60.0" prefWidth="125.0" text="получить .xlsx" />
    </children>
 </Pane>

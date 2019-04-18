@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -11,6 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDate;
 
 public class Controller {
     public static String rukovoditel, proveril, cassir, brigadir, sotr2, sotr3;
@@ -41,7 +43,7 @@ public class Controller {
     @FXML
     private TextField percentOfSpec, percentOfSol,
             specRub, solRub,
-            solTotalRub, finalResult;
+            solTotalRub, finalResult, numberOfAct;
     @FXML
     public void initialize () {
     }
@@ -179,6 +181,36 @@ public class Controller {
         OKDP.setText("124");
     }
 
+    @FXML
+    private DatePicker dataCreate;
 
+    @FXML
+    public void toExcel () {
+        ExcelLib excelLib = new ExcelLib();
+        MyModel myModel = new MyModel();
+        myModel.OKDP = OKDP.getText();
+        myModel.OKPO = OKPO.getText();
+        myModel.organization = organization.getText();
+        myModel.unit = podrazdel.getText();
+        myModel.actNumber = numberOfAct.getText();
+        LocalDate localDate = dataCreate.getValue();
+        myModel.dataCreator = localDate.getDayOfMonth() + "-" + localDate.getMonthValue() + "-" + localDate.getYear();
+        myModel.pole11 = summaZaObshieProdRub.getText();
+        myModel.pole12 = summaZaPorcProdRub.getText();
+        myModel.pole13 = summaZaObediProdRub.getText();
+        myModel.pole14 = itogIProdajiRub.getText();
+        myModel.pole15 = sotrudPoCenamRub.getText();
+        myModel.pole16 = filialCenamRub.getText();
+        myModel.pole17 = topFinalProdRub.getText();
+        myModel.pole21 = summaZaObshieProizvodRub.getText();
+        myModel.pole22 = summaZaPorcProizvodRub.getText();
+        myModel.pole23 = summaZaObediProizvodRub.getText();
+        myModel.pole24 = summaZaObediProizvodRub.getText();
+        myModel.pole25 = sotrudPoProizvodRub.getText();
+        myModel.pole26 = filialProizvodRub.getText();
+        myModel.pole27 = topFinalProizvRub.getText();
+        myModel.finalRes = finalResult.getText();
+        excelLib.createXLSX(myModel);
+    }
 
 }
